@@ -22,8 +22,11 @@ class Player
 	$bMain = true
 	#$iAnswer = 0
 
+	def initialize()
+	end
+
 	#get names
-	def self.get_names
+	def get_names
 		puts "Player 1".red + " please enter your name"
 		$sPlayer1 = gets.chomp()
 		puts "Player 2".blue + " please enter your name"
@@ -31,7 +34,7 @@ class Player
 	end
 
 	#random operation
-	def self.generate_random_operation
+	def generate_random_operation
 
 		case rand(1..4)
 		when 1
@@ -51,7 +54,7 @@ class Player
 	end
 
 	#initialize lives
-	def self.initialize_lives
+	def initialize_lives
 		$iLife1 = 3
 		$iLife2 = 3
 		$iTurn = 0
@@ -60,14 +63,14 @@ class Player
 	end
 
 	#generate random numbers
-	def self.generate_random
+	def generate_random
 		$iRand1 = rand(1..20)
 		$iRand2 = rand(1..20)
 
 	end
 
 	#compute answer
-	def self.calculate(iRand1, iRand2, iOp)
+	def calculate(iRand1, iRand2, iOp)
 		case iOp
 		when 1
 			$iTotal = iRand1 + iRand2
@@ -82,7 +85,7 @@ class Player
 	end
 
 	#set turn
-	def self.set_turn
+	def set_turn
 		case $iTurn
 		when 0
 			$iTurn = 1
@@ -95,7 +98,7 @@ class Player
 	end
 
 	#generate question
-	def self.display_question(iRand1, iRand2, iOperationChar)
+	def display_question(iRand1, iRand2, iOperationChar)
 		case $iTurn
 		when 1
 			puts "#{$sPlayer1}".red + " : What does #{iRand1} #{iOperationChar} #{iRand2} equal?"
@@ -106,7 +109,7 @@ class Player
 	end
 
 	#deduct life
-	def self.deduct_life(iTurn)
+	def deduct_life(iTurn)
 		case iTurn
 		when 1
 			$iLife1 -= 1
@@ -116,7 +119,7 @@ class Player
 	end
 
 	#add points
-	def self.add_point(iTurn)
+	def add_point(iTurn)
 		case iTurn
 		when 1
 			$iScore1 += 1
@@ -127,20 +130,20 @@ class Player
 	end
 
 	#show current score
-	def self.show_score
+	def show_score
 		puts "#{$sPlayer1} ".red + "points: #{$iScore1} " + "#{$sPlayer2} ".blue + "points: #{$iScore2}"
 	end
 
 
 	#check scores (bool)
-	def self.check_lives
+	def check_lives
 		if $iLife1 == 0 || $iLife2 == 0
 			$bZeroLife = true
 		end
 	end
 
 	#check user input
-	def self.get_check_user_input
+	def get_check_user_input
 		
 		bOK = true
 
@@ -163,7 +166,7 @@ class Player
 	end
 
 	#begin a new game
-	def self.start_game
+	def start_game
 		
 		puts "starting new game"
 
@@ -176,7 +179,7 @@ class Player
 
 	end
 
-	def self.one_round
+	def one_round
 
 		puts "Round: #{$iRound}"
 		puts "#{$sPlayer1} Life".red + " : #{$iLife1}, " + " #{$sPlayer2} Life".blue + ": #{$iLife2}"
@@ -195,7 +198,7 @@ class Player
 
 	end
 
-	def self.continue
+	def continue
 
 		bOK = true
 		sUser = gets.chomp.downcase
@@ -215,7 +218,7 @@ class Player
 
 	end
 
-	def self.run_game
+	def run_game
 
 		while $bMain
 
@@ -236,8 +239,5 @@ class Player
 	end 
 
 #Methods end here
-
-	run_game
-
 
 end
